@@ -1,0 +1,28 @@
+﻿<html>
+<head>
+    <link href="style/style.css" rel="stylesheet" type="text/css">
+    <script src="chrome-api-vsdoc.js"></script>
+    <script>
+        // We retrieve the new tweet from the background page.
+        var tweet = chrome.extension.getBackgroundPage().tweet;
+    </script>
+</head>
+<body>
+    <div id="notification">
+        <div id="picture">
+            <script>document.write('<img src="' + tweet.picture + '" />');</script>
+        </div>
+        <div id="content">
+            <div id="user">
+                <script>
+                    document.write('<a href="http://twitter.com/' + tweet.user + '" target="_blank">@' + tweet.user + '</a>');
+                </script>
+            </div>
+            <div id="tweet">
+                <script>document.write(tweet.text);</script>
+            </div>
+        </div>
+        <div style="clear: left;"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+﻿{
+	"manifest_version": 2,
+	"name": "Reviewboard Count",
+	"version": "0.1",
+	"description": "Displays the number of review requests waiting",
+	"background": {
+		"page": "background.html",
+		"persistent": false
+	},
+	"options_page": "options.html",
+	"permissions": [
+		"alarms",
+		"tabs",
+		"storage",
+		"http://*/"
+	],
+	"browser_action": {
+		"default_icon": "img/favicon.png"
+	}
+}

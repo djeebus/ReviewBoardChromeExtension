@@ -1,0 +1,80 @@
+﻿<html>
+<head>
+    <link href="style/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="head">
+        <script>
+            document.write('<img src="' + chrome.extension.getURL('pics/wsn.png') + '" alt="www.whatsnextparis.com"/>');
+        </script>
+        <div>The first conference of its kind in France, the future of IT technologies 26-27 May 2011.</div>
+        <a href="http://www.whatsnextparis.com" target="_blank" title="What's Next Paris - 26 27 Mai 2011">www.whatsnextparis.com</a>
+    </div>
+
+    <hr />
+
+    <div id="config">
+        <input id="chkbox" type="checkbox" onchange="switchNotification(this);" />
+        <label>Disable notifications</label>
+        <div></div>
+    </div>
+
+    <hr />
+
+    <div id="wall">
+        <script>
+            // We retrieve the tweets array from the background page.
+            var tweets = chrome.extension.getBackgroundPage().tweets;
+            for (var i = 0 ; i < tweets.length ; i++) {
+                document.write('<div class="tweet">');
+                document.write('<div class="picture">');
+                document.write('<img src="' + tweets[i].picture + '" alt="picture"/>');
+                document.write('</div>');
+                document.write('<div class="content">');
+                document.write('<div class="user">');
+                document.write('<a href="http://twitter.com/' + tweets[i].user + '" target="_blank">@' + tweets[i].user + '</a>');
+                document.write('</div>');
+                document.write('<div class="text">');
+                document.write(tweets[i].text);
+                document.write('</div>');
+                document.write('</div>');
+                document.write('<div style="clear:left;"></div></div>');
+            }
+        </script>
+    </div>
+
+    <div id="footer">
+        <script>
+            document.write('<img src="' + chrome.extension.getURL('pics/zenika-full.gif') + '" alt="Zenika - Architecture Informatique"/>');
+        </script>
+        <a href="http://www.zenika.com" target="_blank" title="Zenika - Architecture Informatique">www.zenika.com</a>
+    </div>
+
+    <script>
+        // Each time the popup is opened we clear the tweets badge counter
+        chrome.extension.getBackgroundPage().resetBadgeText();
+
+        // Checking the box according to the localStorage.
+        if (window.localStorage) {
+            if (window.localStorage.noticationEnable == 'true') {
+                window.document.getElementById('chkbox').checked = false;;
+            } else {
+                window.document.getElementById('chkbox').checked = true;
+            }
+        }
+
+        // Change notification display preference.
+        // User preference is stored in localStorage.
+        function switchNotification(checkbox) {
+            if (window.localStorage) {
+                if (checkbox.checked) {
+                    window.localStorage.noticationEnable = 'false';
+                } else {
+                    window.localStorage.noticationEnable = 'true';
+                    chrome.extension.getBackgroundPage().resetBadgeText();
+                }
+            }
+        }
+    </script>
+</body>
+</html>

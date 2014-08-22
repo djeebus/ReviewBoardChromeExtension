@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ReviewBoard Notify: Options</title>
+</head>
+<body>
+    <form>
+        <dl>
+            <dt>
+                <label for="url">Reviewboard Url</label>
+            </dt>
+            <dd>
+                <input type="url" id="url" />
+            </dd>
+
+            <dt>
+                <label for="poll">Minutes between checks</label>
+            </dt>
+            <dd>
+                <input type="number" id="poll" />
+            </dd>
+
+            <dt>
+                <label for="username">Username</label>
+            </dt>
+            <dd>
+                <input type="text" id="username" />
+            </dd>
+
+            <dt>
+                <label for="password">Password</label></dt>
+            <dd>
+                <input type="password" id="password" /></dd>
+        </dl>
+
+        <input type="submit" value="Save" id="save" />
+        <span id="status"></span>
+    </form>
+
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="options.js"></script>
+</body>
+</html>
